@@ -1,0 +1,56 @@
+% ---------------------------------------------------------------------------
+% Portada oficial del TFM - Facultad de Ciencias Económicas y Empresariales
+% Reproduce la plantilla "portada-tfm-economicas" de la Universidad de Alicante:
+% cuadro de texto de 15,13 cm situado a 4,21 cm del borde izquierdo y a 5,45 cm
+% del superior, con texto centrado de 12 pt e interlineado de 18 pt.
+% Los valores se toman del encabezado YAML del documento .qmd.
+% ---------------------------------------------------------------------------
+\begin{titlepage}
+\thispagestyle{empty}
+
+% Imagen oficial de la portada, a sangre (página completa).
+\AddToShipoutPictureBG*{%
+  \put(0,0){\includegraphics[width=\paperwidth,height=\paperheight]{images/portada-ua.jpg}}%
+}
+
+\begin{textblock}{15.13}(4.21, 5.45)
+\centering
+\setstretch{1}\fontsize{12}{18}\selectfont
+
+~\\
+~\\
+~\\
+~\\
+\textbf{MÁSTER EN $master$}\\
+~\\
+\textbf{CURSO ACADÉMICO $curso$}\\
+~\\
+~\\
+~\\
+$title$\\
+~\\
+~\\
+~\\
+~\\
+$for(author)$$author$$sep$\\$endfor$\\
+~\\
+$tutor$\\
+DEPARTAMENTO $departamento$\\
+~\\
+~\\
+~\\
+~\\
+~\\
+~\\
+~\\
+$lugarfecha$
+\end{textblock}
+
+% El texto anterior va en un cuadro flotante, así que la página quedaría
+% vacía y LaTeX no la imprimiría. Esta caja vacía la obliga a componerse.
+\null
+\end{titlepage}
+
+% A partir de aquí se numeran todas las páginas en el centro del pie.
+\setcounter{page}{2}
+\pagestyle{fancy}

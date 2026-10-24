@@ -1,0 +1,16 @@
+_output/
+.quarto/
+*_files/
+*.tex
+!before-body.tex
+*.log
+*.aux
+*.out
+*.toc
+*.lof
+*.lot
+.Rhistory
+.Rproj.user/
+.DS_Store
+
+/.quarto/

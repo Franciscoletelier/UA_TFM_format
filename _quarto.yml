@@ -1,0 +1,121 @@
+project:
+  type: default
+  output-dir: _output
+
+format:
+  pdf:
+    documentclass: report
+    papersize: a4
+    fontsize: 12pt
+    pdf-engine: xelatex
+    latex-auto-install: true
+    keep-tex: true
+
+    # Interlineado 1,5 y justificación completa (normativa, p. 17).
+    linestretch: 1.5
+
+    # Márgenes exigidos: superior e inferior 2,5 cm; izquierdo y derecho 3 cm.
+    geometry:
+      - top=2.5cm
+      - bottom=2.5cm
+      - left=3cm
+      - right=3cm
+
+    # El índice se genera desde el .qmd, después del resumen.
+    toc: false
+    number-sections: true
+    toc-depth: 3
+
+    # Figuras y tablas: numeradas, con título y fuente.
+    fig-pos: "H"
+    fig-cap-location: bottom
+    tbl-cap-location: top
+    fig-width: 6
+    fig-height: 4
+    fig-dpi: 300
+
+    colorlinks: true
+    linkcolor: uablue
+    urlcolor: uablue
+    citecolor: uablue
+
+    # La portada se construye en before-body.tex con los datos del YAML.
+    template-partials:
+      - before-body.tex
+
+    include-in-header:
+      text: |
+        \usepackage{float}
+        \usepackage{booktabs}
+        \usepackage{longtable}
+        \usepackage{caption}
+        \usepackage{graphicx}
+        \usepackage{xcolor}
+        \usepackage{eso-pic}
+        \usepackage{setspace}
+        \usepackage[absolute,overlay]{textpos}
+        \usepackage{fancyhdr}
+        \usepackage{titlesec}
+
+        % Tipografía tipo Times, como la plantilla oficial de portada.
+        % Se prueban varias opciones y se usa la primera que exista en el
+        % equipo. Si no hay ninguna, el documento usa la fuente por defecto
+        % de LaTeX en lugar de fallar.
+        \usepackage{fontspec}
+        \IfFontExistsTF{TeX Gyre Termes}{%
+          \setmainfont{TeX Gyre Termes}%
+        }{%
+          \IfFontExistsTF{Times New Roman}{%
+            \setmainfont{Times New Roman}%
+          }{%
+            \IfFontExistsTF{texgyretermes-regular.otf}{%
+              \setmainfont{texgyretermes}[%
+                Extension      = .otf,
+                UprightFont    = *-regular,
+                BoldFont       = *-bold,
+                ItalicFont     = *-italic,
+                BoldItalicFont = *-bolditalic]%
+            }{}%
+          }%
+        }
+
+        % Colores corporativos de la Universidad de Alicante.
+        \definecolor{uablue}{HTML}{005682}
+        \definecolor{uayellow}{HTML}{FFD23A}
+
+        % Unidades en centímetros para situar el texto de la portada.
+        \setlength{\TPHorizModule}{1cm}
+        \setlength{\TPVertModule}{1cm}
+
+        % Numeración de páginas en la parte inferior central (normativa, p. 17).
+        \fancypagestyle{fancy}{%
+          \fancyhf{}%
+          \fancyfoot[C]{\thepage}%
+          \renewcommand{\headrulewidth}{0pt}%
+        }
+        \fancypagestyle{plain}{%
+          \fancyhf{}%
+          \fancyfoot[C]{\thepage}%
+          \renewcommand{\headrulewidth}{0pt}%
+        }
+
+        % Encabezados de sección: "1 Introducción", sin la palabra "Capítulo".
+        \titleformat{\chapter}[hang]{\normalfont\LARGE\bfseries\color{uablue}}{\thechapter}{0.6em}{}
+        \titlespacing*{\chapter}{0pt}{0pt}{20pt}
+        \titleformat{\section}{\normalfont\Large\bfseries\color{uablue}}{\thesection}{0.6em}{}
+        \titleformat{\subsection}{\normalfont\large\bfseries}{\thesubsection}{0.6em}{}
+
+        % Pie de figura: fuente de los datos bajo la figura.
+        \newcommand{\fuente}[1]{\par\vspace{-0.6em}{\footnotesize\textit{Fuente:} #1\par}}
+
+    # Estilo de citas Harvard-APA (normativa, p. 16).
+    cite-method: citeproc
+
+bibliography: references.bib
+csl: apa.csl
+
+execute:
+  echo: false
+  output: true
+  message: false
+  warning: false

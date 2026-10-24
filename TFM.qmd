@@ -1,0 +1,189 @@
+---
+# ---------------------------------------------------------------------------
+# Datos de la portada. Edita solo los valores entre comillas.
+# ---------------------------------------------------------------------------
+title: "TÍTULO DEL TRABAJO"
+author:
+  - "Nombre y Apellidos del Estudiante"
+tutor: "Nombre y Apellidos del Tutor o Tutora"
+departamento: "DE ANÁLISIS ECONÓMICO APLICADO"
+master: "ECONOMÍA APLICADA"
+curso: "2025 - 2026"
+lugarfecha: "San Vicente del Raspeig, junio de 2026"
+
+lang: es-ES
+---
+
+```{=latex}
+% ---------------------------------------------------------------------------
+% Segunda página: resumen, palabras clave y códigos JEL (normativa, p. 7).
+% ---------------------------------------------------------------------------
+```
+
+## Resumen {.unnumbered}
+
+Escribe aquí el resumen, con un máximo de **300 palabras**. Debe seguir la
+secuencia introducción, metodología, resultados y conclusiones, y ser
+autosuficiente: quien lo lea debe entenderlo sin consultar el resto del
+trabajo. Redáctalo al final, cuando ya conozcas en profundidad el tema.
+
+No empieces con «Este trabajo» ni «La autora». Usa la tercera persona, la voz
+activa y el tiempo presente, y evita las siglas poco conocidas.
+
+**Palabras clave:** primera, segunda, tercera, cuarta, quinta.
+
+**Códigos JEL:** C10, E24, J21.
+
+## Abstract {.unnumbered}
+
+Write the English version of the abstract here, also within the 300-word
+limit. The regulations require the abstract and the keywords in one of the
+official languages and in English.
+
+**Keywords:** first, second, third, fourth, fifth.
+
+**JEL codes:** C10, E24, J21.
+
+```{=latex}
+\clearpage
+\renewcommand*\contentsname{Índice}
+\tableofcontents
+
+% Índices de figuras y tablas. Si tu trabajo no los necesita, borra
+% estas cuatro líneas.
+\clearpage
+\renewcommand*\listfigurename{Índice de figuras}
+\listoffigures
+\renewcommand*\listtablename{Índice de tablas}
+\listoftables
+
+\clearpage
+```
+
+# Introducción
+
+Presenta y delimita el tema de investigación. Explica las razones por las que
+has elegido ese tema, su relevancia y actualidad en el campo al que pertenece,
+y describe al final la estructura del trabajo.
+
+Las citas se escriben entre corchetes [@ejemplo2020]. Si el autor forma parte
+de la frase, se escribe así: @ejemplo2020 sostiene que el efecto es positivo.
+
+# Antecedentes
+
+Expón el estado de la cuestión: qué se ha publicado antes sobre tu tema. Esta
+revisión bibliográfica debe recoger tanto los trabajos que coinciden con tu
+perspectiva como los que la contradicen.
+
+## Marco teórico
+
+Describe las teorías y los conceptos que sirven de base a la investigación y
+relaciónalos con el problema planteado.
+
+# Objetivos
+
+Formula el objetivo general y los específicos. Exprésalos con un verbo en
+infinitivo: describir, analizar, comparar, evaluar, estimar.
+
+El objetivo general de este trabajo es ...
+
+Los objetivos específicos son:
+
+1. Primer objetivo específico.
+2. Segundo objetivo específico.
+3. Tercer objetivo específico.
+
+# Metodología
+
+Explica cómo se ha realizado la investigación: la técnica utilizada, dónde y
+cuándo se hizo, las fuentes estadísticas y las bases de datos manejadas, y los
+instrumentos de observación. Debe quedar redactada de forma que otra persona
+pueda repetir el trabajo.
+
+## Fuentes de datos
+
+Describe aquí el origen de los datos, el período cubierto y el tratamiento
+previo que has aplicado.
+
+## Estrategia empírica
+
+Presenta el modelo o la técnica de análisis y sus supuestos.
+
+# Desarrollo
+
+Presenta los datos obtenidos y las deducciones del análisis. Describe primero
+los resultados más sencillos y después los más complejos, y separa los
+principales de los secundarios.
+
+La @tbl-ejemplo muestra el formato de tabla. Cada tabla y cada figura deben
+llevar título y la fuente de los datos, y han de mencionarse en el texto.
+
+```{r}
+#| label: tbl-ejemplo
+#| tbl-cap: "Título descriptivo de la tabla"
+
+tabla <- data.frame(
+  Variable = c("Variable A", "Variable B", "Variable C"),
+  Media    = c(12.4, 8.7, 21.3),
+  `Desv. típica` = c(2.1, 1.4, 3.8),
+  check.names = FALSE
+)
+
+knitr::kable(tabla, booktabs = TRUE, align = "lrr", digits = 2)
+```
+
+*Fuente:* elaboración propia a partir de los datos de ...
+
+La @fig-ejemplo muestra el formato de figura. Según la normativa, conviene que
+la figura aparezca antes de su explicación y en la misma página que el texto
+que la comenta.
+
+```{r}
+#| label: fig-ejemplo
+#| fig-cap: "Título descriptivo de la figura"
+#| fig-width: 6
+#| fig-height: 3.5
+
+barplot(
+  c(12.4, 8.7, 21.3),
+  names.arg = c("Variable A", "Variable B", "Variable C"),
+  col = "#005682",
+  border = NA,
+  ylab = "Unidades de medida"
+)
+```
+
+*Fuente:* elaboración propia a partir de los datos de ...
+
+## Discusión de los resultados
+
+Explica el significado de los resultados con respecto a la teoría presentada y
+a los objetivos marcados. Compara tus resultados con los de otros trabajos
+equiparables e indica si se aprueban, se modifican o se abandonan las
+hipótesis planteadas.
+
+# Conclusiones
+
+Sintetiza los resultados de la investigación. Las conclusiones no son un
+resumen de los capítulos: deben señalar los resultados obtenidos, cómo se han
+encontrado, los aportes al campo de estudio, las limitaciones de la
+investigación y las líneas que quedan abiertas.
+
+Puedes presentarlas como texto continuo o enumeradas, siempre de forma concisa
+y precisa.
+
+# Bibliografía {.unnumbered}
+
+::: {#refs}
+:::
+
+```{=latex}
+\appendix
+\renewcommand{\thechapter}{\Alph{chapter}}
+```
+
+# Anexos
+
+Incluye aquí el material que, siendo relevante, no es imprescindible para
+entender el trabajo: análisis de datos detallados, fichas, cuestionarios o el
+código utilizado.
